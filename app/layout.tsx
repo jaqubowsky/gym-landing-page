@@ -1,8 +1,10 @@
 import { ReactNode } from "react";
 import "@/styles/globals.css";
-import { Inter } from "next/font/google";
+import { Roboto } from "next/font/google";
+import { Navigation } from "@/components/Navigation";
+import clsx from "clsx";
 
-const inter = Inter({ subsets: ["latin"] });
+const roboto = Roboto({ weight: "400", subsets: ["latin"] });
 
 export const metadata = {
   title: "palladiumpultusk.com",
@@ -12,8 +14,10 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <Navigation />
-      <body className={inter.className}>{children}</body>
+      <body className={clsx("w-screen h-screen", roboto.className)}>
+        <Navigation />
+        {children}
+      </body>
     </html>
   );
 }
