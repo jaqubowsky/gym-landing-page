@@ -3,6 +3,7 @@ import "@/styles/globals.css";
 import { Roboto } from "next/font/google";
 import { Navigation } from "@/components/Navigation";
 import clsx from "clsx";
+import { Footer } from "@/components/Footer";
 
 const roboto = Roboto({ weight: "400", subsets: ["latin"] });
 
@@ -17,6 +18,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body className={clsx("w-screen h-screen", roboto.className)}>
         <Navigation />
         {children}
+        <Footer />
       </body>
     </html>
   );
