@@ -9,8 +9,9 @@ import Logo from "../Logo";
 
 const navItems = [
   { name: "O nas", href: "/about" },
-  { name: "Rozpiska", href: "/scheudle" },
   { name: "Galeria", href: "/gallery" },
+  { name: "Godziny otwarcia", href: "/scheudle" },
+  { name: "Cennik", href: "/price" },
   { name: "Kontakt", href: "/contact" },
 ];
 
