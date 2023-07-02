@@ -15,11 +15,11 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={clsx("w-screen h-screen", roboto.className)}>
-        <Navigation />
-        {children}
-        <Footer />
-      </body>
+        <body className={clsx("h-screen w-full", roboto.className)}>
+          <Navigation />
+          {children}
+          <Footer />
+        </body>
     </html>
   );
 }
