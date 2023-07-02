@@ -4,13 +4,12 @@ import NavigationItem from "./NavigationItem";
 import Nav from "./Nav";
 import useScreenSize from "@/hooks/useScreenSize";
 import BurgerMenu from "./BurgerMenu";
-import logo from "@/assets/images/gym_logo.png";
-import Logo from "../Logo";
+import CloudinaryImage from "../CloudinaryImage";
 
 const navItems = [
   { name: "O nas", href: "/about" },
   { name: "Galeria", href: "/gallery" },
-  { name: "Godziny otwarcia", href: "/scheudle" },
+  { name: "Godziny otwarcia", href: "/schedule" },
   { name: "Cennik", href: "/price" },
   { name: "Kontakt", href: "/contact" },
 ];
@@ -20,7 +19,7 @@ const Navigation = () => {
 
   const navItemsEl = navItems.map((item) => {
     return (
-      <NavigationItem className="text-4xl" href={item.href} key={item.name}>
+      <NavigationItem target="_self" className="text-4xl" href={item.href} key={item.name}>
         {item.name}
       </NavigationItem>
     );
@@ -29,10 +28,15 @@ const Navigation = () => {
   if (screenSize <= 425) {
     return (
       <Nav>
-        <BurgerMenu>
-          <Logo className="h-40 w-40" logo={logo} />
-          {navItemsEl}
-        </BurgerMenu>
+        <NavigationItem href="/" target="_self">
+          <CloudinaryImage
+            src="/gym_logo_immgmy"
+            alt="logo"
+            height={100}
+            width={100}
+          />
+        </NavigationItem>
+        <BurgerMenu>{navItemsEl}</BurgerMenu>
       </Nav>
     );
   } else {
