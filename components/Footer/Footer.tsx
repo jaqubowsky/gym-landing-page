@@ -1,6 +1,7 @@
-import Image from "next/image";
+import { CldImage } from "next-cloudinary";
 import Section from "../Section/Section";
-import logo2 from "@/assets/images/logo2.png"
+import IconsGrid from "./IconsGrid";
+import CloudinaryImage from "../CloudinaryImage";
 
 const Footer = () => {
   return (
@@ -25,7 +26,14 @@ const Footer = () => {
             <span className="font-bold">Sob.-Nd.</span>
             <span>8:00-18:00</span>
           </div>
-          <Image className="bg-black rounded-full my-4" src={logo2} alt="logo2" />
+            <CloudinaryImage
+              className="bg-black rounded-full my-4 h-full w-full"
+              src="/logo2_dwpoia"
+              width={200}
+              height={200}
+              alt="logo2"
+            />
+          <IconsGrid />
         </div>
       </div>
     </Section>
