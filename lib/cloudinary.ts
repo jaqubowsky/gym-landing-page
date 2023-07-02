@@ -1,9 +1,38 @@
-export async function search(options) {
-  const params = {
-    ...options
-  }
+interface Resource {
+  asset_id: string;
+  public_id: string;
+  folder: string;
+  filename: string;
+  format: string;
+  version: number;
+  resource_type: string;
+  type: string;
+  created_at: string;
+  uploaded_at: string;
+  bytes: number;
+  backup_bytes: number;
+  width: number;
+  height: number;
+  aspect_ratio: number;
+  pixels: number;
+  url: string;
+  secure_url: string;
+  status: string;
+  access_mode: string;
+  access_control: null | any;
+  etag: string;
+  created_by: { access_key: string };
+  uploaded_by: { access_key: string };
+}
 
-  const paramString = Object.keys(params).map(key => `${key}=${encodeURIComponent(params[key])}`).join('&')
+export async function search(options: { [key: string]: string }) {
+  const params = {
+    ...options,
+  };
+
+  const paramString = Object.keys(params)
+    .map((key) => `${key}=${encodeURIComponent(params[key])}`)
+    .join("&");
 
   const results = await fetch(
     `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/resources/search?${paramString}`,
@@ -24,14 +53,14 @@ export async function search(options) {
   return results;
 }
 
-export function mapImageResources(resources) {
-  return resources.map((resource) => {
-    const { width, height } = resource;
+export function mapImageResources(resources: Resource[]) {
+  return resources.map((resource: Resource) => {
+    const { asset_id, public_id, secure_url, width, height } = resource;
 
     return {
-      id: resource.asset_id,
-      src: resource.public_id,
-      image: resource.secure_url,
+      id: asset_id,
+      src: public_id,
+      image: secure_url,
       width,
       height,
     };
