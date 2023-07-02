@@ -1,5 +1,8 @@
-import Button from "../Button";
+"use client";
+
+import ButtonLink from "../ButtonLink";
 import Section from "../Section/Section";
+import { CldImage } from "next-cloudinary";
 
 const About = () => {
   return (
@@ -14,7 +17,9 @@ const About = () => {
         doświadczonym sportowcem, Palladium Fitness Club zapewnia idealne
         środowisko do osiągnięcia swoich celów.
       </p>
-      <Button className="bg-yellow-300">Dołącz</Button>
+      <ButtonLink href="/" className="bg-yellow-300">
+        Dołącz
+      </ButtonLink>
     </Section>
   );
 };
