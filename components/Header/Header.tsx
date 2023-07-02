@@ -1,4 +1,4 @@
-import Button from "../Button";
+import ButtonLink from "../ButtonLink";
 import Section from "../Section/Section";
 
 const Header = () => {
@@ -7,7 +7,7 @@ const Header = () => {
       <h1 className="mb-6 text-5xl drop-shadow-xl font-bold text-neutral-800">
         Palladium fitness<span className=" text-gray-100 block">Club</span>
       </h1>
-      <Button className="text-xl bg-white">DOWIEDZ SIE WIECEJ</Button>
+      <ButtonLink href="/" className="text-xl bg-white">DOWIEDZ SIE WIECEJ</ButtonLink>
     </Section>
   );
 };
