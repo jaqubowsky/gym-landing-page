@@ -1,22 +1,25 @@
 import clsx from "clsx";
+import Link, { LinkProps } from "next/link";
 import { FC } from "react";
 
-interface ButtonProps extends React.HTMLAttributes<HTMLButtonElement> {
+interface ButtonLink extends LinkProps {
   className?: string;
+  href: string;
   children: React.ReactNode;
 }
 
-const Button: FC<ButtonProps> = ({ className, children }) => {
+const ButtonLink: FC<ButtonLink> = ({ className, children, href }) => {
   return (
-    <button
+    <Link
+      href={href}
       className={clsx(
         "py-4 px-10 rounded-sm text-neutral-800 uppercase font-bold drop-shadow-lg",
         className
       )}
     >
       {children}
-    </button>
+    </Link>
   );
 };
 
-export default Button;
+export default ButtonLink;
