@@ -3,10 +3,9 @@
 import { FC, ReactNode, useState } from "react";
 import Burger from "./Burger";
 import { AnimatePresence, motion } from "framer-motion";
-import logo from "@/assets/images/gym_logo.png";
 import NavigationItem from "./NavigationItem";
 import Image from "next/image";
-import CloudinaryImage from "../CloudinaryImage";
+import logo from "@/assets/images/logo.png";
 
 interface BurgerMenu {
   children: ReactNode;
@@ -34,8 +33,8 @@ const BurgerMenu: FC<BurgerMenu> = ({ children }) => {
           >
             <div className="flex flex-col items-center justify-around h-3/4">
               <NavigationItem href="/" target="_self">
-                <CloudinaryImage
-                  src="/gym_logo_immgmy"
+                <Image
+                  src={logo}
                   alt="logo"
                   height={200}
                   width={200}
