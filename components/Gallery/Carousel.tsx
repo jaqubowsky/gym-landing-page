@@ -3,9 +3,9 @@
 import { FC } from "react";
 import useEmblaCarousel, { EmblaOptionsType } from "embla-carousel-react";
 import Autoplay from "embla-carousel-autoplay";
-import CloudinaryImage from "../CloudinaryImage";
 import { image } from "../Lightbox/Lightbox";
 import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 type PropType = {
   images: image[];
@@ -19,28 +19,29 @@ const Carousel: FC<PropType> = ({ options, images }) => {
     router.push("/gallery");
   };
 
+  const [emblaRef] = useEmblaCarousel(options, [Autoplay()]);
+
   const slidesEl = images.map((image) => {
     return (
       <div
-        className="relative h-64 flex-[0_0_auto] w-full md:w-1/3 gap-6"
+        className="relative h-64 flex-[1_0_auto] w-full md:w-[49.3%] lg:w-[32.5%] md:h-80 lg:h-96cursor-pointer"
         key={image.id}
         onClick={navigateToGallery}
       >
-        <CloudinaryImage
-          fill
-          className="object-cover h-full w-full"
+        <Image
+          className="object-cover h-full"
+          style={{ backgroundImage: `url(${image.pixelate})` }}
           src={image.src}
           alt="Your alt text"
+          fill
         />
       </div>
     );
   });
 
-  const [emblaRef] = useEmblaCarousel(options, [Autoplay()]);
-
   return (
     <div className="overflow-hidden w-full" ref={emblaRef}>
-      <div className="flex">{slidesEl}</div>
+      <div className="flex md:gap-1 lg:gap-2">{slidesEl}</div>
     </div>
   );
 };
