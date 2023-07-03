@@ -1,13 +1,27 @@
 import ButtonLink from "../ButtonLink";
 import Section from "../Section/Section";
+import background from "../../assets/images/bg.jpg";
 
 const Header = () => {
   return (
-    <Section id="header" className="bg-yellow-300 uppercase h-1/2">
-      <h1 className="mb-6 text-5xl drop-shadow-xl font-bold text-neutral-800">
-        Palladium fitness<span className=" text-gray-100 block">Club</span>
-      </h1>
-      <ButtonLink href="/" className="text-xl bg-white">DOWIEDZ SIE WIECEJ</ButtonLink>
+    <Section
+      id="header"
+      className="h-3/4 text-2xl bg-center bg-fixed bg-no-repeat bg-cover bg-yellow-300"
+      style={{
+        backgroundImage: `url(${background.src})`,
+      }}
+    >
+      <div className="bg-trBlack px-6 md:px-12 lg:px-20 py-12 rounded-xl drop-shadow-md">
+        <h1 className="mb-6 text-5xl drop-shadow-xl uppercase font-bold text-yellow-300 break-words">
+          Palladium fitness<span className=" text-gray-100 block">Club</span>
+        </h1>
+        <h5 className="mb-6 drop-shadow-xl text-white">
+          Najlepsza siłownia w Pułtusku
+        </h5>
+        <ButtonLink href="/pricing" className="text-xl uppercase bg-yellow-300">
+          Dołącz
+        </ButtonLink>
+      </div>
     </Section>
   );
 };
