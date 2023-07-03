@@ -3,13 +3,14 @@
 import { FC, MouseEvent, Suspense, useState } from "react";
 import useOutsideClick from "@/hooks/useOutsideClick";
 import { AnimatePresence, motion } from "framer-motion";
-import { CldImage } from "next-cloudinary";
 import { X } from "react-feather";
+import Image from "next/image";
 
 export type image = {
   id: string;
+  title: string;
+  pixelate: string;
   src: string;
-  image: string;
   width: number;
   height: number;
 };
@@ -36,7 +37,7 @@ const Lightbox: FC<Props> = ({ imagesArr: images }) => {
 
   const showNext = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    let currentIndex = images.indexOf(imageToShow);
+    let currentIndex = images.indexOf(imageToShow as image);
     if (currentIndex >= images.length - 1) {
       currentIndex = 0;
       setImageToShow(images[currentIndex]);
@@ -48,7 +49,7 @@ const Lightbox: FC<Props> = ({ imagesArr: images }) => {
 
   const showPrev = (e: MouseEvent<HTMLButtonElement>) => {
     e.stopPropagation();
-    let currentIndex = images.indexOf(imageToShow);
+    let currentIndex = images.indexOf(imageToShow as image);
     if (currentIndex <= 0) {
       currentIndex = images.length - 1;
       setImageToShow(images[currentIndex]);
@@ -60,16 +61,17 @@ const Lightbox: FC<Props> = ({ imagesArr: images }) => {
 
   const imageCards = images.map((image) => (
     <div
-      className="cursor-pointer w-64 h-64 rounded-sm drop-shadow-md flex-container hover:scale-105 transition-all duration-300 ease-in-out"
+      className="cursor-pointer rounded-sm drop-shadow-md h-72 md:h-80 lg:h-96 flex-1 flex-container hover:scale-105 transition-all duration-300 ease-in-out"
       onClick={() => showImage(image)}
       key={image.src}
     >
-      <CldImage
-        className="object-contain"
-        id="lightbox-img"
+      <Image
+        className="object-cover w-full h-full"
+        style={{ backgroundImage: `url(${image.pixelate})` }}
         src={image.src}
-        alt="lightbox"
-        fill
+        alt={image.title}
+        width={500}
+        height={500}
       />
     </div>
   ));
@@ -92,36 +94,35 @@ const Lightbox: FC<Props> = ({ imagesArr: images }) => {
               <X className="h-16 w-16 text-yellow-300" />
             </div>
             <button
-              className="bg-yellow-300 bg-opacity-80 z-50 p-4 rounded-sm drop-shadow-md text-2xl absolute top-1/2 left-[50px] -translate-y-1/2"
+              className="bg-yellow-300 bg-opacity-80 z-50 p-2 md:p-4 text-2xl rounded-sm drop-shadow-md absolute top-1/2 left-[5px] md:left-[50px] -translate-y-1/2"
               onClick={(e) => showPrev(e)}
             >
               ⭠
             </button>
             <AnimatePresence mode="sync">
               {imageToShow && (
-                <Suspense fallback={<div>Loading...</div>}>
-                  <motion.div
-                    ref={ref}
-                    className="flex-container"
-                    initial={{ opacity: 0 }}
-                    animate={{ opacity: 1 }}
-                    exit={{ opacity: 0 }}
-                    whileHover={{ scale: 1.05 }}
-                  >
-                    <CldImage
-                      className="object-contain h-full w-full"
-                      id="lightbox-img"
-                      src={imageToShow.src}
-                      alt="lightbox"
-                      width={500}
-                      height={500}
-                    />
-                  </motion.div>
-                </Suspense>
+                <motion.div
+                  ref={ref}
+                  className="flex-container "
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  whileHover={{ scale: 1.05 }}
+                >
+                  <Image
+                    className="object-contain h-full w-full"
+                    style={{ backgroundImage: `url(${imageToShow.pixelate})` }}
+                    src={imageToShow.src}
+                    alt={imageToShow.title}
+                    width={1000}
+                    height={1000}
+                    sizes="65vw"
+                  />
+                </motion.div>
               )}
             </AnimatePresence>
             <button
-              className="bg-yellow-300 bg-opacity-80 z-50 p-4 rounded-sm drop-shadow-md text-2xl absolute top-1/2 right-[50px] -translate-y-1/2"
+              className="bg-yellow-300 bg-opacity-80 z-50 p-2 text-2xl md:p-4 rounded-sm drop-shadow-md absolute md:right-[50px] top-1/2 right-[5px] -translate-y-1/2"
               onClick={(e) => showNext(e)}
             >
               ⭢
