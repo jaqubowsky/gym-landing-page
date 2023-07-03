@@ -1,3 +1,5 @@
+import buildUrl from "cloudinary-build-url";
+
 interface Resource {
   asset_id: string;
   public_id: string;
@@ -57,10 +59,23 @@ export function mapImageResources(resources: Resource[]) {
   return resources.map((resource: Resource) => {
     const { asset_id, public_id, secure_url, width, height } = resource;
 
+    const url = buildUrl(public_id, {
+      cloud: {
+        cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME,
+      },
+      transformations: {
+        effect: {
+          name: "pixelate",
+          value: 40,
+        },
+      },
+    });
+
     return {
       id: asset_id,
-      src: public_id,
-      image: secure_url,
+      title: public_id,
+      pixelate: url,
+      src: secure_url,
       width,
       height,
     };
