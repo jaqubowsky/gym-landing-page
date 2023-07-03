@@ -15,7 +15,11 @@ const NavigationItem: FC<NavigationItem> = ({
   ...props
 }) => {
   return (
-    <Link target={target} className={clsx("drop-shadow-md font-bold text-white", className)} {...props}>
+    <Link
+      target={target}
+      className={clsx(`drop-shadow-md font-bold text-white`, className)}
+      {...props}
+    >
       {children}
     </Link>
   );
