@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+
 module.exports = {
   content: [
     "./pages/**/*.{js,ts,jsx,tsx,mdx}",
@@ -8,7 +9,9 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        lightbox: 'rgba(0, 0, 0, 0.8)',
+        lightbox: "rgba(0, 0, 0, 0.8)",
+        trBlack: "rgba(0, 0, 0, 0.65)",
+        trYellow: "rgba(253, 224, 71, 0.65)",
       },
     },
   },
