@@ -1,1 +1,1 @@
-export {default as MoreAbout} from "./MoreAbout";
+export { default as MoreAbout } from "./MoreAbout";
