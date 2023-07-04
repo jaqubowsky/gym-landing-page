@@ -1,5 +1,6 @@
 import { ReactNode } from "react";
 import "@/styles/globals.css";
+import "@/styles/embla.css"
 import { Roboto } from "next/font/google";
 import { Navigation } from "@/components/Navigation";
 import clsx from "clsx";
@@ -15,11 +16,11 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-        <body className={clsx("h-screen w-full", roboto.className)}>
-          <Navigation />
-          {children}
-          <Footer />
-        </body>
+      <body className={clsx("h-screen w-full", roboto.className)}>
+        <Navigation />
+        {children}
+        <Footer />
+      </body>
     </html>
   );
 }
