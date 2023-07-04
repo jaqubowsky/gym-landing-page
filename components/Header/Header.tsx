@@ -15,10 +15,10 @@ const Header = () => {
         <h1 className="mb-6 text-5xl drop-shadow-xl uppercase font-bold text-yellow-300 break-words">
           Palladium fitness<span className=" text-gray-100 block">Club</span>
         </h1>
-        <h5 className="mb-6 drop-shadow-xl text-white">
+        <h5 className="drop-shadow-xl text-white mb-10">
           Najlepsza siłownia w Pułtusku
         </h5>
-        <ButtonLink href="/pricing" className="text-xl uppercase bg-yellow-300">
+        <ButtonLink href="/pricing" intent="yellow" size="large">
           Dołącz
         </ButtonLink>
       </div>
