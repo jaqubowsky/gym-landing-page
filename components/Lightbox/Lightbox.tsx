@@ -1,6 +1,13 @@
 "use client";
 
-import { FC, MouseEvent, Suspense, useState } from "react";
+import {
+  FC,
+  MouseEvent,
+  Suspense,
+  useCallback,
+  useEffect,
+  useState,
+} from "react";
 import useOutsideClick from "@/hooks/useOutsideClick";
 import { AnimatePresence, motion } from "framer-motion";
 import { X } from "react-feather";
@@ -31,33 +38,59 @@ const Lightbox: FC<Props> = ({ imagesArr: images }) => {
     setLightBoxDisplay(true);
   };
 
-  const closeLightbox = () => {
+  const closeLightbox = useCallback(() => {
     setLightBoxDisplay(false);
-  };
+  }, [setLightBoxDisplay]);
 
-  const showNext = (e: MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    let currentIndex = images.indexOf(imageToShow as image);
-    if (currentIndex >= images.length - 1) {
-      currentIndex = 0;
-      setImageToShow(images[currentIndex]);
-    } else {
-      let nextImage = images[currentIndex + 1];
-      setImageToShow(nextImage);
-    }
-  };
+  const showNext = useCallback(
+    (e: MouseEvent<HTMLButtonElement> | KeyboardEvent) => {
+      e.stopPropagation();
+      let currentIndex = images.indexOf(imageToShow!);
+      if (currentIndex >= images.length - 1) {
+        currentIndex = 0;
+        setImageToShow(images[currentIndex]);
+      } else {
+        let nextImage = images[currentIndex + 1];
+        setImageToShow(nextImage);
+      }
+    },
+    [images, imageToShow]
+  );
 
-  const showPrev = (e: MouseEvent<HTMLButtonElement>) => {
-    e.stopPropagation();
-    let currentIndex = images.indexOf(imageToShow as image);
-    if (currentIndex <= 0) {
-      currentIndex = images.length - 1;
-      setImageToShow(images[currentIndex]);
-    } else {
-      let nextImage = images[currentIndex - 1];
-      setImageToShow(nextImage);
-    }
-  };
+  const showPrev = useCallback(
+    (e: MouseEvent<HTMLButtonElement> | KeyboardEvent) => {
+      e.stopPropagation();
+      let currentIndex = images.indexOf(imageToShow!);
+      if (currentIndex <= 0) {
+        currentIndex = images.length - 1;
+        setImageToShow(images[currentIndex]);
+      } else {
+        let nextImage = images[currentIndex - 1];
+        setImageToShow(nextImage);
+      }
+    },
+    [images, imageToShow]
+  );
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (lightboxDisplay) {
+        if (e.key === "ArrowLeft") {
+          showPrev(e);
+        } else if (e.key === "ArrowRight") {
+          showNext(e);
+        } else if (e.key === "Escape") {
+          closeLightbox();
+        }
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [lightboxDisplay, showPrev, showNext, closeLightbox]);
 
   const imageCards = images.map((image) => (
     <div
