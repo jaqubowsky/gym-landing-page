@@ -33,12 +33,7 @@ const BurgerMenu: FC<BurgerMenu> = ({ children }) => {
           >
             <div className="flex flex-col items-center justify-around h-3/4">
               <NavigationItem href="/" target="_self">
-                <Image
-                  src={logo}
-                  alt="logo"
-                  height={200}
-                  width={200}
-                />
+                <Image src={logo} alt="logo" height={200} width={200} />
               </NavigationItem>
               {children}
             </div>
