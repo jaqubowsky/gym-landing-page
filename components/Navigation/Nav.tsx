@@ -10,7 +10,7 @@ const Nav: FC<Nav> = ({ className, children }) => {
   return (
     <nav
       className={clsx(
-        "z-30 inset-0 sticky md:p-1 bg-neutral-900 drop-shadow-md flex md:justify-center",
+        "z-30 inset-0 sticky md:p-1 bg-neutral-900 drop-shadow-md shadow-lg flex md:justify-center",
         className
       )}
     >
