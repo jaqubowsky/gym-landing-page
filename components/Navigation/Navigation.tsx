@@ -9,7 +9,7 @@ import Image from "next/image";
 import logo from "@/assets/images/logo.png";
 
 const navItems = [
-  { name: "O nas", href: "/about" },
+  { name: "Poznaj nas", href: "/meet-us" },
   { name: "Galeria", href: "/gallery" },
   { name: "Godziny otwarcia", href: "/schedule" },
   { name: "Cennik", href: "/pricing" },
@@ -21,7 +21,6 @@ const Navigation = () => {
   const pathname = usePathname();
 
   const navItemsEl = navItems.map((item) => {
-
     const isActive = pathname === item.href;
     return (
       <NavigationItem
