@@ -24,11 +24,11 @@ const IconsGrid = () => {
 
     return (
       <NavigationItem
-        className="h-auto w-auto"
+        className="h-auto w-auto hover:animate-bounce focus:animate-bounce group transition-all"
         href={icon.href}
         key={icon.href}
       >
-        <Icon className="text-neutral-900" />
+        <Icon className="text-neutral-900 group-hover:text-white group-focus:text-white transition-all" />
       </NavigationItem>
     );
   });
