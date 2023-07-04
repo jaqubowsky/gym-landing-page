@@ -6,13 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "pretty": "prettier --write \"./**/*.{ts,tsx}\""
   },
   "dependencies": {
     "@types/node": "20.3.2",
     "@types/react": "18.2.14",
     "@types/react-dom": "18.2.6",
     "autoprefixer": "10.4.14",
+    "class-variance-authority": "^0.6.1",
     "cloudinary": "^1.37.3",
     "cloudinary-build-url": "^0.2.4",
     "clsx": "^1.2.1",
