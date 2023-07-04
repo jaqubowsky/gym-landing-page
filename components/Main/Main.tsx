@@ -1,5 +1,5 @@
 import { About } from "../About";
-import { Gallery } from "../Gallery";
+import { CarouselSection } from "../Carrousel";
 import { MoreAbout } from "../MoreAbout";
 
 const Main = () => {
@@ -7,7 +7,7 @@ const Main = () => {
     <main>
       <About />
       <MoreAbout />
-      <Gallery />
+      <CarouselSection />
     </main>
   );
 };
