@@ -19,7 +19,7 @@ const MeetUsBox: FC<Props> = ({ aboutData, className }) => {
     <>
       <div
         className={clsx(
-          "embla__slide overflow-hidden cursor-pointer p-4 group",
+          "embla__slide overflow-hidden cursor-pointer p-6 group",
           className
         )}
       >
