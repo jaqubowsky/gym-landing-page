@@ -8,14 +8,14 @@ const Footer = () => {
     <Section id="footer" className="bg-yellow-300">
       <div className="grid grid-cols-1 md:grid-cols-3 items-center justify-center gap-6 mb-8">
         <div className="flex flex-col gap-2">
-          <h2 className="font-bold">Masz pytania?</h2>
-          <h5>Nasza recepcja czeka na twój telefon.</h5>
-          <h2 className="font-bold">503 900 803</h2>
-          <h5>
+          <strong>Masz pytania?</strong>
+          <span>Nasza recepcja czeka na twój telefon.</span>
+          <strong>503 900 803</strong>
+          <span>
             Palladium Fitness Club{" "}
             <span className="block">ul. Adama Mickiewicza 35c</span>{" "}
             <span className="block">06-100 Pułtusk</span>
-          </h5>
+          </span>
         </div>
         <div>
           <Image
@@ -28,20 +28,20 @@ const Footer = () => {
         </div>
         <div className="flex items-center flex-col gap-2">
           <div className="flex gap-6">
-            <span className="font-bold">Pon.-Pt.</span>
+            <strong>Pon.-Pt.</strong>
             <span>7:00-22:00</span>
           </div>
           <div className="flex gap-6">
-            <span className="font-bold">Sob.-Nd.</span>
+            <strong >Sob.-Nd.</strong>
             <span>8:00-18:00</span>
           </div>
-          <p className="mb-4">recepcja.braingym@op.pl</p>
+          <span className="mb-4">recepcja.braingym@op.pl</span>
         </div>
       </div>
       <IconsGrid />
-      <h2 className="font-bold text-sm mt-4">
-        Copyright © Palladium Fitness Club 2023
-      </h2>
+      <span className="font-bold text-sm mt-4">
+        Copyright &#169; Palladium Fitness Club 2023
+      </span>
     </Section>
   );
 };
