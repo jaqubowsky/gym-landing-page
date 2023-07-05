@@ -27,6 +27,7 @@ const IconsGrid = () => {
         className="h-auto w-auto hover:animate-bounce focus:animate-bounce group transition-all"
         href={icon.href}
         key={icon.href}
+        aria-label={icon.href}
       >
         <Icon className="text-neutral-900 group-hover:text-white group-focus:text-white transition-all" />
       </NavigationItem>
