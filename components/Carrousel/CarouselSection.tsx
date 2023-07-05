@@ -38,9 +38,9 @@ const CarouselSection = async () => {
   return (
     <Section id="gallery" innerStyle="md:max-w-6xl">
       <h2 className="text-6xl font-bold mb-4">Galeria</h2>
-      <h5 className="font-bold mb-8 lg:text-2xl">
+      <h2 className="font-bold mb-8 lg:text-2xl">
         Zobacz zdjęcia z naszego klubu.
-      </h5>
+      </h2>
       <Carousel options={OPTIONS}>
         {slidesEl}
       </Carousel>
