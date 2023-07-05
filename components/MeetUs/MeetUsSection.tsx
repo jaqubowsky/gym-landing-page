@@ -14,29 +14,14 @@ const OPTIONS: EmblaOptionsType = {
 
 const data = [
   {
-    name: "Paweł Brejnak",
-    desc: "Właściciel",
-    src: Pawel,
-  },
-  {
     name: "Alicja",
     desc: "Personel",
     src: Alicja,
   },
   {
-    name: "Andrzej",
-    desc: "Trener personalny",
-    src: Andrzej,
-  },
-  {
-    name: "Paweł Brejnak",
+    name: "Paweł",
     desc: "Właściciel",
     src: Pawel,
-  },
-  {
-    name: "Alicja",
-    desc: "Personel",
-    src: Alicja,
   },
   {
     name: "Andrzej",
@@ -54,8 +39,8 @@ const MeetUsSection = () => {
 
   return (
     <Section id="meet-us" className="bg-neutral-800">
-      <h2 className="font-bold text-6xl text-white mb-4">
-        Poznaj <span className="block text-yellow-300">nas!</span>
+      <h2 className="font-bold text-6xl text-white mb-2">
+        Poznaj <span className="text-yellow-300">nas!</span>
       </h2>
       <Carousel options={OPTIONS}>{meetUsBoxes}</Carousel>
     </Section>
