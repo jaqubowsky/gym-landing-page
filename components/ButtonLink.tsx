@@ -20,6 +20,7 @@ const buttonLinkClasses = cva(
     variants: {
       intent: {
         yellow: ["bg-yellow-300", "uppercase"],
+        white: ["bg-white", "uppercase"],
       },
       hover: {
         dark: [
@@ -32,6 +33,12 @@ const buttonLinkClasses = cva(
           "hover:bg-white",
           "hover:text-neutral-800",
           "focus:bg-white",
+          "focus:text-neutral-800",
+        ],
+        yellow: [
+          "hover:bg-yellow-300",
+          "hover:text-neutral-800",
+          "focus:bg-yellow-300",
           "focus:text-neutral-800",
         ],
       },
