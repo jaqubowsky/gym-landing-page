@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { FC, useEffect, useState } from "react";
 import ToggleSwitch from "../ToggleSwitch";
@@ -6,8 +6,9 @@ import { PlusCircle } from "react-feather";
 import { motion, AnimatePresence } from "framer-motion";
 
 interface PassProps {
-  isOptionOn: boolean;
+  isOptionOn?: boolean;
   passPrice: number;
+  benefits: string[];
 }
 
 interface UserStatus {
@@ -15,7 +16,7 @@ interface UserStatus {
   isSenior: boolean;
 }
 
-const Pass: FC<PassProps> = ({ isOptionOn, passPrice }) => {
+const Pass: FC<PassProps> = ({ isOptionOn, passPrice, benefits }) => {
   const [userStatus, setUserStatus] = useState<UserStatus>({
     isStudent: false,
     isSenior: false,
@@ -41,14 +42,25 @@ const Pass: FC<PassProps> = ({ isOptionOn, passPrice }) => {
     }));
   };
 
+  const benefitsEl = benefits.map((benefit) => {
+    return (
+      <li className="flex gap-6 text-left" key={benefit}>
+        <span>
+          <PlusCircle />
+        </span>
+        <span>{benefit}</span>
+      </li>
+    );
+  });
+
   return (
-    <div className="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-md my-4">
-      <div className="mb-6">
+    <div className="flex flex-col items-center justify-center p-8 bg-white rounded-lg shadow-md">
+      <div>
         <h3 className="text-2xl font-bold">Karnet</h3>
         <span>Płatny co miesiąc</span>
       </div>
       <AnimatePresence>
-        <motion.div className="text-4xl font-bold mb-4">
+        <motion.div className="text-4xl font-bold my-6">
           <motion.span
             key={price}
             initial={{ y: 20, opacity: 0 }}
@@ -60,25 +72,15 @@ const Pass: FC<PassProps> = ({ isOptionOn, passPrice }) => {
           </motion.span>
         </motion.div>
       </AnimatePresence>
-      <ul className="flex flex-col gap-2">
-        <li className="flex gap-6">
-          <PlusCircle /> Wstęp do siłowni
-        </li>
-        <li className="flex gap-6">
-          <PlusCircle /> 4 wejścia
-        </li>
-        <li className="flex gap-6">
-          <PlusCircle /> Ważny we wszystkich klubach Palladium
-        </li>
-      </ul>
-      <div className="flex justify-between w-full mt-10">
+      <ul className="flex flex-col gap-2">{benefitsEl}</ul>
+      <div className="flex justify-between w-full mt-6">
         <span>Jestem STUDENTEM</span>
         <ToggleSwitch
           isOn={userStatus.isStudent}
           handleToggle={() => handleToggle("isStudent")}
         />
       </div>
-      <div className="flex justify-between w-full mt-10">
+      <div className="flex justify-between w-full mt-6">
         <span>Jestem SENIOREM</span>
         <ToggleSwitch
           isOn={userStatus.isSenior}
