@@ -1,39 +1,37 @@
 "use client";
 
-import { useState, Fragment } from "react";
+import { useState } from "react";
 import {
   FitnessSection,
   GymSection,
   MartialArtsSection,
-  PricingSection,
+  NotSelected,
 } from "@/components/Pricing";
-import { Listbox, Transition } from "@headlessui/react";
+import { ArrowDown } from "react-feather";
+import Select from "@/components/Select";
+import Section from "@/components/Section/Section";
 
 const options = [
   {
     id: 0,
-    value: "",
-    label: "Wybierz sekcję",
+    value: "Wybierz sekcję",
   },
   {
     id: 1,
     value: "Siłownia",
-    label: "Siłownia",
   },
   {
     id: 2,
     value: "Sztuki walki",
-    label: "Sztuki walki",
   },
   {
     id: 3,
     value: "Fitness / Joga",
-    label: "Fitness / Joga",
   },
 ];
 
 export default function Pricing() {
-  const [selectedOption, setSelectedOption] = useState("");
+  const [selectedOption, setSelectedOption] = useState("Wybierz sekcję");
 
   const renderSection = () => {
     switch (selectedOption) {
@@ -44,54 +42,23 @@ export default function Pricing() {
       case "Fitness / Joga":
         return <FitnessSection />;
       default:
-        return null;
+        return <NotSelected />;
     }
   };
 
   return (
-    <PricingSection>
-      <div className="flex w-[300px] z-40 mb-10">
-        <Listbox value={selectedOption} onChange={setSelectedOption}>
-          <div className="w-full mt-1 relative">
-            <Listbox.Button className="relative w-full cursor-pointer rounded-lg bg-white py-2 pl-3 pr-10 text-left shadow-md focus:outline-none focus-visible:border-indigo-500 focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75 focus-visible:ring-offset-2 focus-visible:ring-offset-yellow-300 sm:text-sm">
-              <span className="block truncate">{selectedOption}</span>
-            </Listbox.Button>
-            <Transition
-              as={Fragment}
-              leave="transition ease-in duration-100"
-              leaveFrom="opacity-100"
-              leaveTo="opacity-0"
-            >
-              <Listbox.Options className="absolute mt-1 max-h-60 w-full overflow-auto rounded-md bg-white py-1 text-base shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
-                {options.map((option) => (
-                  <Listbox.Option
-                    key={option.id}
-                    className={({ active }) =>
-                      `relative cursor-pointer select-none py-2 pl-10 pr-4 ${
-                        active ? "bg-amber-100 text-amber-900" : "text-gray-900"
-                      }`
-                    }
-                    value={option.value}
-                  >
-                    {({ selected }) => (
-                      <>
-                        <span
-                          className={`block truncate ${
-                            selected ? "font-medium" : "font-normal"
-                          }`}
-                        >
-                          {option.label}
-                        </span>
-                      </>
-                    )}
-                  </Listbox.Option>
-                ))}
-              </Listbox.Options>
-            </Transition>
-          </div>
-        </Listbox>
+    <Section className="bg-neutral-800 md:p-16" innerStyle="max-w-full">
+      <div className="flex items-center justify-center h-32 w-32 animate-bounce">
+        <ArrowDown className="text-white w-full h-full" />
+      </div>
+      <div className="flex w-[320px] md:w-[450px] z-40">
+        <Select
+          options={options}
+          selectedOption={selectedOption}
+          setSelectedOption={setSelectedOption}
+        />
       </div>
       {renderSection()}
-    </PricingSection>
+    </Section>
   );
 }
