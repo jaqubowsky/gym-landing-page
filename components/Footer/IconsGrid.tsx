@@ -24,7 +24,7 @@ const IconsGrid = () => {
 
     return (
       <NavigationItem
-        className="h-auto w-auto hover:animate-bounce focus:animate-bounce group transition-all"
+        className="h-auto w-auto group transition-all"
         href={icon.href}
         key={icon.href}
         aria-label={icon.href}
