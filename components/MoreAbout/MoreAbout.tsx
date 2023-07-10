@@ -5,13 +5,13 @@ import Image from "next/image";
 
 const MoreAbout = () => {
   return (
-    <Section id="more" className="bg-yellow-400" innerStyle="md:max-w-4xl">
-      <h2 className="text-6xl text-center font-bold mb-8 text-neutral-800 drop-shadow-sm">
-        Nie tylko siłownia
+    <Section id="more" className="bg-neutral-600" innerStyle="md:max-w-4xl">
+      <h2 className="text-6xl text-center font-bold mb-8 text-white drop-shadow-sm">
+        Nie tylko <span className="text-yellow-300">siłownia</span>
       </h2>
       <div className="flex flex-col md:flex-row gap-4 md:gap-6 items-center">
         <div className="mb-2 md:w-1/2 md:text-3xl flex md:items-center">
-          <p className="text-neutral-900 drop-shadow-sm mb-6 font-semibold md:font-normal">
+          <p className="text-gray-100 mb-6 font-semibold md:font-normal">
             Odkryj różnorodność i emocje w Palladium Fitness Club! U nas
             znajdziesz nie tylko siłownię, ale także szereg innych aktywności,
             takich jak boks, zajęcia taneczne, funkcjonalne ciało, muay thai,
@@ -28,7 +28,13 @@ const MoreAbout = () => {
           />
         </div>
       </div>
-      <ButtonLink href="/schedule" intent="white" hover="dark" size="large">
+      <ButtonLink
+        href="/schedule"
+        intent="yellow"
+        hover="white"
+        size="large"
+        className="w-3/4"
+      >
         Plan zajęć
       </ButtonLink>
     </Section>
