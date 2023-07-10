@@ -44,9 +44,9 @@ const GymSection = () => {
 
   return (
     <>
-      <h2 className="text-6xl text-center font-bold mb-8 text-white drop-shadow-sm">
-        Fitness / joga
-      </h2>
+      <h5 className="text-gray-300 text-sm mt-2 mb-8">
+        Zakup możliwy tylko stancjonarnie przy recepcji.
+      </h5>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {passesEl}
       </div>

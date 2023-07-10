@@ -59,9 +59,9 @@ const MartialArtsSection = () => {
 
   return (
     <>
-      <h2 className="text-6xl text-center font-bold mb-8 text-white drop-shadow-sm">
-        Sztuki walki
-      </h2>
+      <h5 className="text-gray-300 text-sm mt-2 mb-8">
+        Zakup możliwy tylko stancjonarnie przy recepcji.
+      </h5>
       <ToggleOption
         isOn={isOptionOn}
         handleToggle={handleToggle}
