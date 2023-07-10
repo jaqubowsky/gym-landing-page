@@ -13,7 +13,6 @@ const navItems = [
   { name: "Galeria", href: "/gallery" },
   { name: "Godziny otwarcia", href: "/schedule" },
   { name: "Cennik", href: "/pricing" },
-  { name: "Kontakt", href: "/contact" },
 ];
 
 const Navigation = () => {
