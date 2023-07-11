@@ -6,7 +6,6 @@ import Nav from "./Nav";
 import useScreenSize from "@/hooks/useScreenSize";
 import BurgerMenu from "./BurgerMenu";
 import Image from "next/image";
-import logo from "@/assets/images/logo.png";
 
 const navItems = [
   { name: "Poznaj nas", href: "/meet-us" },
@@ -39,7 +38,12 @@ const Navigation = () => {
     return (
       <Nav>
         <NavigationItem href="/" target="_self">
-          <Image src={logo} alt="logo" height={100} width={100} />
+          <Image
+            src="https://res.cloudinary.com/doz2peb5r/image/upload/f_auto,q_auto/gym_logo_immgmy"
+            alt="logo"
+            height={100}
+            width={100}
+          />
         </NavigationItem>
         <BurgerMenu>{navItemsEl}</BurgerMenu>
       </Nav>
@@ -48,7 +52,12 @@ const Navigation = () => {
     return (
       <Nav>
         <NavigationItem href="/" target="_self">
-          <Image src={logo} alt="logo" height={100} width={100} />
+          <Image
+            src="https://res.cloudinary.com/doz2peb5r/image/upload/f_auto,q_auto/gym_logo_immgmy"
+            alt="logo"
+            height={100}
+            width={100}
+          />
         </NavigationItem>
         {navItemsEl}
       </Nav>

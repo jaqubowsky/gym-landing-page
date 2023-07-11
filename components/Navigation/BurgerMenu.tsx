@@ -32,9 +32,15 @@ const BurgerMenu: FC<BurgerMenu> = ({ children }) => {
             transition={{ duration: 0.2 }}
           >
             <div className="flex flex-col items-center justify-around h-3/4">
-              <NavigationItem href="/" target="_self">
-                <Image src={logo} alt="logo" height={200} width={200} />
-              </NavigationItem>
+              <div className="h-48 w-48 flex-container">
+                <Image
+                  src="https://res.cloudinary.com/doz2peb5r/image/upload/f_auto,q_auto/gym_logo_immgmy"
+                  alt="logo"
+                  className="object-contain w-full h-full"
+                  height={100}
+                  width={100}
+                />
+              </div>
               {children}
             </div>
           </motion.div>
