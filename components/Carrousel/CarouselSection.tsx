@@ -4,6 +4,7 @@ import Carousel from "./Carousel";
 import ButtonLink from "../ButtonLink";
 import { mapImageResources, search } from "@/lib/cloudinary";
 import Image from "next/image";
+import { NavigationItem } from "../Navigation";
 
 const OPTIONS: EmblaOptionsType = {
   loop: true,
@@ -23,14 +24,16 @@ const CarouselSection = async () => {
   const slidesEl = images.map((image) => {
     return (
       <div className="embla__slide" key={image.id}>
-        <Image
-          className="embla__slide__img cursor-pointer hover:scale-105 transition-all"
-          style={{ backgroundImage: `url(${image.pixelate})` }}
-          src={image.src}
-          alt={image.title}
-          width={1000}
-          height={1000}
-        />
+        <NavigationItem href="/gallery" target="_self">
+          <Image
+            className="embla__slide__img cursor-pointer hover:scale-105 transition-all"
+            style={{ backgroundImage: `url(${image.pixelate})` }}
+            src={image.src}
+            alt={image.title}
+            width={1000}
+            height={1000}
+          />
+        </NavigationItem>
       </div>
     );
   });
@@ -41,9 +44,7 @@ const CarouselSection = async () => {
       <h2 className="font-bold mb-8 lg:text-2xl">
         Zobacz zdjęcia z naszego klubu.
       </h2>
-      <Carousel options={OPTIONS}>
-        {slidesEl}
-      </Carousel>
+      <Carousel options={OPTIONS}>{slidesEl}</Carousel>
       <ButtonLink intent="yellow" hover="dark" className="mt-6" href="/gallery">
         Zobacz więcej
       </ButtonLink>

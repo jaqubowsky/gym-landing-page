@@ -1,6 +1,6 @@
-"use client";
+'use client'
 
-import { Dispatch, FC, ReactNode, SetStateAction, useState } from "react";
+import { FC, ReactNode } from "react";
 import Burger from "./Burger";
 import { AnimatePresence, motion } from "framer-motion";
 import Image from "next/image";

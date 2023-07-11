@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Section from "../Section/Section";
 import ToggleOption from "../ToggleOption";
 import Pass from "./Pass";
 
