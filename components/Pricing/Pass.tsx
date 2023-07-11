@@ -4,6 +4,7 @@ import { FC, useEffect, useState } from "react";
 import ToggleSwitch from "../ToggleSwitch";
 import { PlusCircle } from "react-feather";
 import { motion, AnimatePresence } from "framer-motion";
+import { Tooltip } from "react-tooltip";
 
 interface PassProps {
   isOptionOn?: boolean;
@@ -74,14 +75,29 @@ const Pass: FC<PassProps> = ({ isOptionOn, passPrice, benefits }) => {
       </AnimatePresence>
       <ul className="flex flex-col gap-2">{benefitsEl}</ul>
       <div className="flex justify-between w-full mt-6">
-        <span>Jestem STUDENTEM</span>
+        <span
+          className="cursor-pointer"
+          data-tooltip-id="student-tooltip"
+          data-tooltip-content="za okazaniem legitymacji"
+        >
+          Jestem STUDENTEM
+        </span>
+        <Tooltip id="student-tooltip" />
         <ToggleSwitch
           isOn={userStatus.isStudent}
           handleToggle={() => handleToggle("isStudent")}
         />
       </div>
       <div className="flex justify-between w-full mt-6">
-        <span>Jestem SENIOREM</span>
+        <span
+          className="cursor-pointer"
+          data-tooltip-id="senior-tooltip"
+          data-tooltip-content="powyżej 55 roku życia"
+          data-tooltip-place="bottom"
+        >
+          Jestem SENIOREM
+        </span>
+        <Tooltip id="senior-tooltip" />
         <ToggleSwitch
           isOn={userStatus.isSenior}
           handleToggle={() => handleToggle("isSenior")}

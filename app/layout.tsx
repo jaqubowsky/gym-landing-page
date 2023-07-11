@@ -1,6 +1,7 @@
 import { ReactNode } from "react";
 import "@/styles/globals.css";
 import "@/styles/embla.css";
+import "react-tooltip/dist/react-tooltip.css";
 import { Roboto } from "next/font/google";
 import { Navigation } from "@/components/Navigation";
 import clsx from "clsx";
