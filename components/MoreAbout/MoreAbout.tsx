@@ -1,5 +1,4 @@
 import ButtonLink from "../ButtonLink";
-import about from "../../assets/images/about.png";
 import Section from "../Section/Section";
 import Image from "next/image";
 
@@ -22,9 +21,11 @@ const MoreAbout = () => {
         </div>
         <div className="flex-1 max-w-[350px] mb-6">
           <Image
-            src={about}
+            src="https://res.cloudinary.com/doz2peb5r/image/upload/f_auto,q_auto/jwbpikzgvu4c4cge5g7y"
             alt="Paweł Brejnak"
             className="object-contain h-full w-full"
+            height={350}
+            width={350}
           />
         </div>
       </div>
