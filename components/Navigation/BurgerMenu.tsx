@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { FC, ReactNode } from "react";
 import Burger from "./Burger";
@@ -32,6 +32,7 @@ const BurgerMenu: FC<BurgerMenu> = ({ children, isOpen, toggleOpen }) => {
                   className="object-contain w-full h-full"
                   height={200}
                   width={200}
+                  priority
                 />
               </div>
               {children}
