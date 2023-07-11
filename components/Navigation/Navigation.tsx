@@ -6,6 +6,7 @@ import Nav from "./Nav";
 import useScreenSize from "@/hooks/useScreenSize";
 import BurgerMenu from "./BurgerMenu";
 import Image from "next/image";
+import { useState } from "react";
 
 const navItems = [
   { name: "Poznaj nas", href: "/meet-us" },
@@ -18,6 +19,18 @@ const Navigation = () => {
   const screenSize = useScreenSize();
   const pathname = usePathname();
 
+  const [isOpen, setIsOpen] = useState(false);
+
+  const toggleOpen = () => {
+    setIsOpen(!isOpen);
+    document.body.classList.toggle("overflow-hidden");
+  };
+
+  const closeMenu = () => {
+    setIsOpen(false);
+    document.body.classList.remove("overflow-hidden");
+  };
+
   const navItemsEl = navItems.map((item) => {
     const isActive = pathname === item.href;
     return (
@@ -28,6 +41,7 @@ const Navigation = () => {
         }`}
         href={item.href}
         key={item.name}
+        onClick={closeMenu}
       >
         {item.name}
       </NavigationItem>
@@ -45,7 +59,9 @@ const Navigation = () => {
             width={100}
           />
         </NavigationItem>
-        <BurgerMenu>{navItemsEl}</BurgerMenu>
+        <BurgerMenu isOpen={isOpen} toggleOpen={toggleOpen}>
+          {navItemsEl}
+        </BurgerMenu>
       </Nav>
     );
   } else {

@@ -1,24 +1,17 @@
 "use client";
 
-import { FC, ReactNode, useState } from "react";
+import { Dispatch, FC, ReactNode, SetStateAction, useState } from "react";
 import Burger from "./Burger";
 import { AnimatePresence, motion } from "framer-motion";
-import NavigationItem from "./NavigationItem";
 import Image from "next/image";
-import logo from "@/assets/images/logo.png";
 
 interface BurgerMenu {
   children: ReactNode;
+  isOpen: boolean;
+  toggleOpen: () => void;
 }
 
-const BurgerMenu: FC<BurgerMenu> = ({ children }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  const toggleOpen = () => {
-    setIsOpen(!isOpen);
-    document.body.classList.toggle("overflow-hidden");
-  };
-
+const BurgerMenu: FC<BurgerMenu> = ({ children, isOpen, toggleOpen }) => {
   return (
     <>
       <Burger isOpen={isOpen} onClick={toggleOpen} />
@@ -37,8 +30,8 @@ const BurgerMenu: FC<BurgerMenu> = ({ children }) => {
                   src="https://res.cloudinary.com/doz2peb5r/image/upload/f_auto,q_auto/gym_logo_immgmy"
                   alt="logo"
                   className="object-contain w-full h-full"
-                  height={100}
-                  width={100}
+                  height={200}
+                  width={200}
                 />
               </div>
               {children}
