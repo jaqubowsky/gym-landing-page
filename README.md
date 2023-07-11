@@ -1,34 +1,106 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+<!-- PROJECT LOGO -->
 
-## Getting Started
+<br />
+<div align="center">
+  <a href="https://gym-landing-page-pi.vercel.app">
+    <img src="/assets/images/logo.png" alt="Logo" width="225" height="200">
+  </a>
 
-First, run the development server:
+<h3 align="center">Fitness Club Landing Page</h3>
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-```
+  <p align="center">
+    <a href="https://gym-landing-page-pi.vercel.app">View Demo</a>
+    ·
+    <a href="https://github.com/jaqubowsky/gym-landing-page/issues">Report Bug</a>
+    ·
+    <a href="https://github.com/jaqubowsky/gym-landing-page/issues">Request Feature</a>
+  </p>
+</div>
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+<!-- TABLE OF CONTENTS -->
+<details>
+  <summary>Table of Contents</summary>
+  <ol>
+    <li>
+      <a href="#about-the-project">About The Project</a>
+      <ul>
+        <li><a href="#built-with">Built With</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="#prerequisites">Prerequisites</a>
+    </li>
+    <li>
+      <a href="#installation">Installation</a>
+    </li>
+    </li>
+    <li><a href="#contact">Contact</a></li>
+    <li>
+      <a href="#left-to-do">Left to do</a>
+    </li>
+  </ol>
+</details>
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-## Learn More
+[![Gym Landing Page Project Screenshot][product-screenshot]](https://gym-landing-page-pi.vercel.app)
+  
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-To learn more about Next.js, take a look at the following resources:
+### Built With
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+[![Built with](https://skillicons.dev/icons?i=next,ts,tailwind)](https://skillicons.dev)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
 
-## Deploy on Vercel
+<!-- GETTING STARTED -->
+### Prerequisites
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* npm
+  ```sh
+  npm install npm@latest -g
+  ```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone git@github.com:jaqubowsky/gym-landing-page.git
+   ```
+2. Install NPM packages
+   ```sh
+   npm install
+   ```
+3. Build
+   ```sh
+   npm run build
+   ```
+4. Start on local machine
+   ```sh
+   npm run start
+   ```
+  
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- LEFT TO DO -->
+### Left to do
+
+<ul>
+  <li>Nothing!</li>
+</ul>
+
+<!-- CONTACT -->
+## Contact
+
+Jakub Nalewajk - [@LinkedIn](https://www.linkedin.com/in/jakub-nalewajk/) - jakub.nalewajk04@gmail.com
+
+Project Link: (https://github.com/jaqubowsky/gym-landing-page)
+
+<p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+<!-- MARKDOWN LINKS & IMAGES -->
+<!-- https://www.markdownguide.org/basic-syntax/#reference-style-links. -->
+[product-screenshot]: /assets/images/prev.png
+
