@@ -51,7 +51,7 @@ export default function Pricing() {
       <div className="flex items-center justify-center h-32 w-32 animate-bounce">
         <ArrowDown className="text-white w-full h-full" />
       </div>
-      <div className="flex w-[320px] md:w-[450px] z-40">
+      <div className="flex w-[320px] md:w-[450px] z-[25]">
         <Select
           options={options}
           selectedOption={selectedOption}
