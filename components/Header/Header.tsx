@@ -16,7 +16,7 @@ const Header = () => {
           Palladium fitness<span className=" text-gray-100 block">Club</span>
         </h1>
         <span className="drop-shadow-xl text-white mb-10">
-          Najlepsza siłownia w Pułtusku
+          Najlepszy klub fitness w Pułtusku
         </span>
         <ButtonLink href="/pricing" intent="yellow" size="large">
           Dołącz
