@@ -10,7 +10,7 @@ import {
 } from "react";
 import useOutsideClick from "@/hooks/useOutsideClick";
 import { AnimatePresence, motion } from "framer-motion";
-import { X } from "react-feather";
+import { ArrowLeft, ArrowRight, X } from "react-feather";
 import Image from "next/image";
 
 export type image = {
@@ -103,8 +103,8 @@ const Lightbox: FC<Props> = ({ imagesArr: images }) => {
         style={{ backgroundImage: `url(${image.pixelate})` }}
         src={image.src}
         alt={image.title}
-        width={500}
-        height={500}
+        width={image.width}
+        height={image.height}
       />
     </div>
   ));
@@ -130,7 +130,7 @@ const Lightbox: FC<Props> = ({ imagesArr: images }) => {
               className="bg-yellow-300 bg-opacity-80 z-50 p-2 md:p-4 text-2xl rounded-sm drop-shadow-md absolute top-1/2 left-[5px] md:left-[50px] -translate-y-1/2"
               onClick={(e) => showPrev(e)}
             >
-              ⭠
+              <ArrowLeft />
             </button>
             <AnimatePresence mode="sync">
               {imageToShow && (
@@ -147,8 +147,8 @@ const Lightbox: FC<Props> = ({ imagesArr: images }) => {
                     style={{ backgroundImage: `url(${imageToShow.pixelate})` }}
                     src={imageToShow.src}
                     alt={imageToShow.title}
-                    width={1000}
-                    height={1000}
+                    width={imageToShow.width}
+                    height={imageToShow.height}
                     sizes="65vw"
                   />
                 </motion.div>
@@ -158,7 +158,7 @@ const Lightbox: FC<Props> = ({ imagesArr: images }) => {
               className="bg-yellow-300 bg-opacity-80 z-50 p-2 text-2xl md:p-4 rounded-sm drop-shadow-md absolute md:right-[50px] top-1/2 right-[5px] -translate-y-1/2"
               onClick={(e) => showNext(e)}
             >
-              ⭢
+              <ArrowRight />
             </button>
           </div>
         ) : (

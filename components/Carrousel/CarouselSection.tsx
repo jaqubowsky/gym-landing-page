@@ -12,13 +12,15 @@ const OPTIONS: EmblaOptionsType = {
   containScroll: "keepSnaps",
 };
 
-const CarouselSection = async () => {
-  const { resources } = await search({
-    expression: 'folder="gallery" AND resource_type="image"',
-    max_results: "7",
-    direction: "desc",
-  });
+const res = search({
+  expression: 'folder="gallery" AND resource_type="image"',
+  max_results: "7",
+  direction: "desc",
+});
 
+const CarouselSection = async () => {
+  
+  const { resources } = await res;
   const images = mapImageResources(resources);
 
   const slidesEl = images.map((image) => {
@@ -30,8 +32,8 @@ const CarouselSection = async () => {
             style={{ backgroundImage: `url(${image.pixelate})` }}
             src={image.src}
             alt={image.title}
-            width={1000}
-            height={1000}
+            width={image.width}
+            height={image.height}
           />
         </NavigationItem>
       </div>

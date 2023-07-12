@@ -2,12 +2,14 @@ import Section from "@/components/Section/Section";
 import { Lightbox } from "@/components/Lightbox";
 import { mapImageResources, search } from "@/lib/cloudinary";
 
-export default async function GalleryPage() {
-  const { resources } = await search({
-    expression: 'folder="gallery" AND resource_type="image"',
-    direction: "desc",
-  });
+const res = search({
+  expression: 'folder="gallery" AND resource_type="image"',
+  direction: "desc",
+});
 
+export default async function GalleryPage() {
+  const { resources } = await res;
+  
   const imagesArr = mapImageResources(resources);
 
   return (
