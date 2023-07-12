@@ -1,12 +1,11 @@
 import ButtonLink from "../ButtonLink";
 import Section from "../Section/Section";
-// import background from "../../assets/images/bg.jpg";
 
 const Header = () => {
   return (
     <Section
       id="header"
-      className="h-[85vh] md:h-[90vh] text-2xl bg-center md:bg-fixed bg-no-repeat bg-cover bg-yellow-300"
+      className="h-[80vh] text-2xl bg-center md:bg-fixed bg-no-repeat bg-cover bg-yellow-300"
       style={{
         backgroundImage: `url("https://res.cloudinary.com/doz2peb5r/image/upload/f_auto,q_auto/daq6hns1uhsykhy8oytn")`,
       }}
