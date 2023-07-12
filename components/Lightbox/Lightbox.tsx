@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import { FC, MouseEvent, useCallback, useEffect, useState } from "react";
 import useOutsideClick from "@/hooks/useOutsideClick";
@@ -28,30 +28,29 @@ const Lightbox: FC<Props> = ({ images }) => {
     setLightboxDisplay(true);
   };
 
-const closeLightbox = useCallback(() => {
-  setLightboxDisplay(false);
-}, [setLightboxDisplay]);
+  const closeLightbox = useCallback(() => {
+    setLightboxDisplay(false);
+  }, [setLightboxDisplay]);
 
-const showNext = useCallback(
-  (e: MouseEvent<HTMLButtonElement> | KeyboardEvent) => {
-    e.stopPropagation();
-    const currentIndex = images.indexOf(imageToShow!);
-    const nextIndex = (currentIndex + 1) % images.length;
-    setImageToShow(images[nextIndex]);
-  },
-  [images, imageToShow]
-);
+  const showNext = useCallback(
+    (e: MouseEvent<HTMLButtonElement> | KeyboardEvent) => {
+      e.stopPropagation();
+      const currentIndex = images.indexOf(imageToShow!);
+      const nextIndex = (currentIndex + 1) % images.length;
+      setImageToShow(images[nextIndex]);
+    },
+    [images, imageToShow]
+  );
 
-const showPrev = useCallback(
-  (e: MouseEvent<HTMLButtonElement> | KeyboardEvent) => {
-    e.stopPropagation();
-    const currentIndex = images.indexOf(imageToShow!);
-    const prevIndex = (currentIndex - 1 + images.length) % images.length;
-    setImageToShow(images[prevIndex]);
-  },
-  [images, imageToShow]
-);
-
+  const showPrev = useCallback(
+    (e: MouseEvent<HTMLButtonElement> | KeyboardEvent) => {
+      e.stopPropagation();
+      const currentIndex = images.indexOf(imageToShow!);
+      const prevIndex = (currentIndex - 1 + images.length) % images.length;
+      setImageToShow(images[prevIndex]);
+    },
+    [images, imageToShow]
+  );
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -81,6 +80,7 @@ const showPrev = useCallback(
     >
       <Image
         className="object-cover w-full h-full"
+        style={{ backgroundImage: `url(${image.pixelate})` }}
         src={image.src}
         alt={image.title}
         width={image.width}
@@ -94,46 +94,44 @@ const showPrev = useCallback(
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {imageCards}
       </div>
-        {lightboxDisplay && (
+      {lightboxDisplay && (
+        <div
+          id="lightbox"
+          className="z-40 fixed inset-0 w-screen h-screen bg-lightbox flex-container"
+        >
           <div
-            id="lightbox"
-            className="z-40 fixed inset-0 w-screen h-screen bg-lightbox flex-container"
+            className="absolute top-[20px] right-[10px] cursor-pointer"
+            onClick={closeLightbox}
           >
-            <div
-              className="absolute top-[20px] right-[10px] cursor-pointer"
-              onClick={closeLightbox}
-            >
-              <X className="h-16 w-16 text-yellow-300" />
-            </div>
-            <button
-              className="bg-yellow-300 bg-opacity-80 z-50 p-2 md:p-4 text-2xl rounded-sm drop-shadow-md absolute top-1/2 left-[5px] md:left-[50px] -translate-y-1/2"
-              onClick={showPrev}
-            >
-              <ArrowLeft />
-            </button>
-              {imageToShow && (
-                <div
-                  ref={ref}
-                  className="flex-container"
-                >
-                  <Image
-                    className="object-contain h-full w-full"
-                    src={imageToShow.src}
-                    alt={imageToShow.title}
-                    width={imageToShow.width}
-                    height={imageToShow.height}
-                    sizes="65vw"
-                  />
-                </div>
-              )}
-            <button
-              className="bg-yellow-300 bg-opacity-80 z-50 p-2 text-2xl md:p-4 rounded-sm drop-shadow-md absolute md:right-[50px] top-1/2 right-[5px] -translate-y-1/2"
-              onClick={showNext}
-            >
-              <ArrowRight />
-            </button>
+            <X className="h-16 w-16 text-yellow-300" />
           </div>
-        )}
+          <button
+            className="bg-yellow-300 bg-opacity-80 z-50 p-2 md:p-4 text-2xl rounded-sm drop-shadow-md absolute top-1/2 left-[5px] md:left-[50px] -translate-y-1/2"
+            onClick={showPrev}
+          >
+            <ArrowLeft />
+          </button>
+          {imageToShow && (
+            <div ref={ref} className="flex-container">
+              <Image
+                className="object-contain h-full w-full"
+                style={{ backgroundImage: `url(${imageToShow.pixelate})` }}
+                src={imageToShow.src}
+                alt={imageToShow.title}
+                width={imageToShow.width}
+                height={imageToShow.height}
+                sizes="65vw"
+              />
+            </div>
+          )}
+          <button
+            className="bg-yellow-300 bg-opacity-80 z-50 p-2 text-2xl md:p-4 rounded-sm drop-shadow-md absolute md:right-[50px] top-1/2 right-[5px] -translate-y-1/2"
+            onClick={showNext}
+          >
+            <ArrowRight />
+          </button>
+        </div>
+      )}
     </>
   );
 };
