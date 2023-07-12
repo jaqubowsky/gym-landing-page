@@ -3,20 +3,16 @@ import Image from "next/image";
 
 interface BurgerMenu {
   children: ReactNode;
-  isOpen: boolean;
-  toggleOpen: () => void;
 }
 
-const BurgerMenu: FC<BurgerMenu> = ({ children, isOpen, toggleOpen }) => {
+const BurgerMenu: FC<BurgerMenu> = ({ children }) => {
   return (
     <>
       <div
-        className={`absolute will-change-transform transition-all duration-300 inset-0 h-screen bg-neutral-700 items-center justify-center ${
-          isOpen ? "slideIn flex" : "will-change-auto"
-        } `}
+        className={`will-change-transform slideIn flex transition-all duration-300 h-full w-screen bg-neutral-700 justify-center`}
       >
-        <div className="flex flex-col items-center justify-around h-3/4">
-          <div className="h-48 w-48 flex-container">
+        <div className="flex flex-col items-center mt-10">
+          <div className="h-48 w-48 flex-container mb-6">
             <Image
               src="https://res.cloudinary.com/doz2peb5r/image/upload/f_auto,q_auto/gym_logo_immgmy"
               alt="logo"
@@ -25,7 +21,7 @@ const BurgerMenu: FC<BurgerMenu> = ({ children, isOpen, toggleOpen }) => {
               width={75}
             />
           </div>
-          {children}
+          <div className="flex-container flex-col gap-16">{children}</div>
         </div>
       </div>
     </>

@@ -37,7 +37,7 @@ const Navigation = () => {
     return (
       <NavigationItem
         target="_self"
-        className={`text-4xl md:text-xl hover:text-yellow-300 md:hover:border-b-2 md:hover:border-yellow-300 tranition-all duration-100 ${
+        className={`text-4xl md:text-xl hover:text-yellow-300 md:hover:border-b-2 text-center md:hover:border-yellow-300 tranition-all duration-100 ${
           isActive ? "text-yellow-300 border-b-2 border-yellow-300" : ""
         }`}
         href={item.href}
@@ -51,37 +51,15 @@ const Navigation = () => {
 
   if (screenSize < 768) {
     return (
-      <Nav>
-        <NavigationItem href="/" target="_self">
-          <Image
-            src="https://res.cloudinary.com/doz2peb5r/image/upload/f_auto,q_auto/gym_logo_immgmy"
-            alt="logo"
-            height={100}
-            width={100}
-          />
-        </NavigationItem>
-        <Burger isOpen={isOpen} onClick={toggleOpen} />
-        {isOpen && (
-          <BurgerMenu isOpen={isOpen} toggleOpen={toggleOpen}>
-            {navItemsEl}
-          </BurgerMenu>
-        )}
-      </Nav>
+      <>
+        <Nav>
+          <Burger isOpen={isOpen} onClick={toggleOpen} />
+        </Nav>
+        {isOpen && <BurgerMenu>{navItemsEl}</BurgerMenu>}
+      </>
     );
   } else {
-    return (
-      <Nav>
-        <NavigationItem href="/" target="_self">
-          <Image
-            src="https://res.cloudinary.com/doz2peb5r/image/upload/f_auto,q_auto/gym_logo_immgmy"
-            alt="logo"
-            height={100}
-            width={100}
-          />
-        </NavigationItem>
-        {navItemsEl}
-      </Nav>
-    );
+    return <Nav>{navItemsEl}</Nav>;
   }
 };
 
