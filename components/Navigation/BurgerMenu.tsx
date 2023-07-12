@@ -9,7 +9,7 @@ const BurgerMenu: FC<BurgerMenu> = ({ children }) => {
   return (
     <>
       <div
-        className={`will-change-transform slideIn flex transition-all duration-300 h-full w-screen bg-neutral-700 justify-center`}
+        className={`will-change-transform slideIn fixed z-50 flex transition-all duration-300 h-full w-screen bg-neutral-700 justify-center`}
       >
         <div className="flex flex-col items-center mt-10">
           <div className="h-48 w-48 flex-container mb-6">

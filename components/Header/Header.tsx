@@ -6,7 +6,7 @@ const Header = () => {
   return (
     <Section
       id="header"
-      className="h-3/4 text-2xl bg-center md:bg-fixed bg-no-repeat bg-cover bg-yellow-300"
+      className="h-[85vh] md:h-[90vh] text-2xl bg-center md:bg-fixed bg-no-repeat bg-cover bg-yellow-300"
       style={{
         backgroundImage: `url("https://res.cloudinary.com/doz2peb5r/image/upload/f_auto,q_auto/daq6hns1uhsykhy8oytn")`,
       }}

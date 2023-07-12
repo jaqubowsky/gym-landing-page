@@ -24,12 +24,10 @@ const Navigation = () => {
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
-    document.body.classList.toggle("overflow-hidden");
   };
 
   const closeMenu = () => {
     setIsOpen(false);
-    document.body.classList.remove("overflow-hidden");
   };
 
   const navItemsEl = navItems.map((item) => {
@@ -53,13 +51,35 @@ const Navigation = () => {
     return (
       <>
         <Nav>
+          <NavigationItem href="/" target="_self">
+            <Image
+              src="https://res.cloudinary.com/doz2peb5r/image/upload/f_auto,q_auto/gym_logo_immgmy"
+              alt="logo"
+              height={100}
+              width={100}
+              onClick={closeMenu}
+            />
+          </NavigationItem>
           <Burger isOpen={isOpen} onClick={toggleOpen} />
         </Nav>
         {isOpen && <BurgerMenu>{navItemsEl}</BurgerMenu>}
       </>
     );
   } else {
-    return <Nav>{navItemsEl}</Nav>;
+    return (
+      <Nav>
+        <NavigationItem href="/" target="_self">
+          <Image
+            src="https://res.cloudinary.com/doz2peb5r/image/upload/f_auto,q_auto/gym_logo_immgmy"
+            alt="logo"
+            height={100}
+            width={100}
+            onClick={closeMenu}
+          />
+        </NavigationItem>
+        {navItemsEl}
+      </Nav>
+    );
   }
 };
 

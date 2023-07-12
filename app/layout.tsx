@@ -20,7 +20,7 @@ export const metadata = {
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="en">
-      <body className={clsx("h-screen w-full", roboto.className)}>
+      <body className={clsx("", roboto.className)}>
         <Navigation />
         {children}
         <Footer />
