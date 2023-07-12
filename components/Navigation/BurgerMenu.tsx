@@ -1,5 +1,4 @@
 import { FC, ReactNode } from "react";
-import Burger from "./Burger";
 import Image from "next/image";
 
 interface BurgerMenu {
@@ -11,10 +10,9 @@ interface BurgerMenu {
 const BurgerMenu: FC<BurgerMenu> = ({ children, isOpen, toggleOpen }) => {
   return (
     <>
-      <Burger isOpen={isOpen} onClick={toggleOpen} />
       <div
         className={`absolute will-change-transform transition-all duration-300 inset-0 h-screen bg-neutral-700 items-center justify-center ${
-          isOpen ? "slideIn flex" : "hidden will-change-auto"
+          isOpen ? "slideIn flex" : "will-change-auto"
         } `}
       >
         <div className="flex flex-col items-center justify-around h-3/4">

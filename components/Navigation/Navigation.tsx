@@ -7,6 +7,7 @@ import Nav from "./Nav";
 import useScreenSize from "@/hooks/useScreenSize";
 import BurgerMenu from "./BurgerMenu";
 import Image from "next/image";
+import Burger from "./Burger";
 
 const navItems = [
   { name: "Poznaj nas", href: "/meet-us" },
@@ -59,9 +60,12 @@ const Navigation = () => {
             width={100}
           />
         </NavigationItem>
-        <BurgerMenu isOpen={isOpen} toggleOpen={toggleOpen}>
-          {navItemsEl}
-        </BurgerMenu>
+        <Burger isOpen={isOpen} onClick={toggleOpen} />
+        {isOpen && (
+          <BurgerMenu isOpen={isOpen} toggleOpen={toggleOpen}>
+            {navItemsEl}
+          </BurgerMenu>
+        )}
       </Nav>
     );
   } else {
