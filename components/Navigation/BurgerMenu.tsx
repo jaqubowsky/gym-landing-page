@@ -1,6 +1,5 @@
 import { FC, ReactNode } from "react";
 import Burger from "./Burger";
-import Image from "next/image";
 
 interface BurgerMenu {
   children: ReactNode;
