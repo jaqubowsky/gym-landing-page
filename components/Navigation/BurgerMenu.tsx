@@ -25,6 +25,16 @@ const BurgerMenu: FC<BurgerMenu> = ({ children, isOpen, toggleOpen }) => {
             transition={{ duration: 0.2 }}
           >
             <div className="flex flex-col items-center justify-around h-3/4">
+              <div className="h-48 w-48 flex-container">
+                <Image
+                  src="https://res.cloudinary.com/doz2peb5r/image/upload/f_auto,q_auto/gym_logo_immgmy"
+                  alt="logo"
+                  className="object-contain w-full h-full"
+                  height={200}
+                  width={200}
+                  priority
+                />
+              </div>
               {children}
             </div>
           </motion.div>

@@ -1,12 +1,12 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import NavigationItem from "./NavigationItem";
 import Nav from "./Nav";
 import useScreenSize from "@/hooks/useScreenSize";
-import BurgerMenu from "./BurgerMenu";
 import Image from "next/image";
-import { useState } from "react";
+import { LazyBurgerMenu } from ".";
 
 const navItems = [
   { name: "Poznaj nas", href: "/meet-us" },
@@ -59,9 +59,9 @@ const Navigation = () => {
             width={100}
           />
         </NavigationItem>
-        <BurgerMenu isOpen={isOpen} toggleOpen={toggleOpen}>
+        <LazyBurgerMenu isOpen={isOpen} toggleOpen={toggleOpen}>
           {navItemsEl}
-        </BurgerMenu>
+        </LazyBurgerMenu>
       </Nav>
     );
   } else {
