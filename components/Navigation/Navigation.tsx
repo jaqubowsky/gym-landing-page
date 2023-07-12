@@ -5,8 +5,8 @@ import { useState } from "react";
 import NavigationItem from "./NavigationItem";
 import Nav from "./Nav";
 import useScreenSize from "@/hooks/useScreenSize";
+import BurgerMenu from "./BurgerMenu";
 import Image from "next/image";
-import { LazyBurgerMenu } from ".";
 
 const navItems = [
   { name: "Poznaj nas", href: "/meet-us" },
@@ -59,9 +59,9 @@ const Navigation = () => {
             width={100}
           />
         </NavigationItem>
-        <LazyBurgerMenu isOpen={isOpen} toggleOpen={toggleOpen}>
+        <BurgerMenu isOpen={isOpen} toggleOpen={toggleOpen}>
           {navItemsEl}
-        </LazyBurgerMenu>
+        </BurgerMenu>
       </Nav>
     );
   } else {
