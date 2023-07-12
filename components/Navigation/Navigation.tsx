@@ -1,12 +1,13 @@
 "use client";
 
 import { usePathname } from "next/navigation";
+import { useState } from "react";
 import NavigationItem from "./NavigationItem";
 import Nav from "./Nav";
 import useScreenSize from "@/hooks/useScreenSize";
 import BurgerMenu from "./BurgerMenu";
 import Image from "next/image";
-import { useState } from "react";
+import Burger from "./Burger";
 
 const navItems = [
   { name: "Poznaj nas", href: "/meet-us" },
@@ -23,12 +24,10 @@ const Navigation = () => {
 
   const toggleOpen = () => {
     setIsOpen(!isOpen);
-    document.body.classList.toggle("overflow-hidden");
   };
 
   const closeMenu = () => {
     setIsOpen(false);
-    document.body.classList.remove("overflow-hidden");
   };
 
   const navItemsEl = navItems.map((item) => {
@@ -36,7 +35,7 @@ const Navigation = () => {
     return (
       <NavigationItem
         target="_self"
-        className={`text-4xl md:text-xl hover:text-yellow-300 md:hover:border-b-2 md:hover:border-yellow-300 tranition-all duration-100 ${
+        className={`text-4xl md:text-xl hover:text-yellow-300 md:hover:border-b-2 text-center md:hover:border-yellow-300 tranition-all duration-100 ${
           isActive ? "text-yellow-300 border-b-2 border-yellow-300" : ""
         }`}
         href={item.href}
@@ -50,19 +49,21 @@ const Navigation = () => {
 
   if (screenSize < 768) {
     return (
-      <Nav>
-        <NavigationItem href="/" target="_self">
-          <Image
-            src="https://res.cloudinary.com/doz2peb5r/image/upload/f_auto,q_auto/gym_logo_immgmy"
-            alt="logo"
-            height={100}
-            width={100}
-          />
-        </NavigationItem>
-        <BurgerMenu isOpen={isOpen} toggleOpen={toggleOpen}>
-          {navItemsEl}
-        </BurgerMenu>
-      </Nav>
+      <>
+        <Nav>
+          <NavigationItem href="/" target="_self">
+            <Image
+              src="https://res.cloudinary.com/doz2peb5r/image/upload/f_auto,q_auto/gym_logo_immgmy"
+              alt="logo"
+              height={100}
+              width={100}
+              onClick={closeMenu}
+            />
+          </NavigationItem>
+          <Burger isOpen={isOpen} onClick={toggleOpen} />
+        </Nav>
+        <BurgerMenu showMenu={isOpen}>{navItemsEl}</BurgerMenu>
+      </>
     );
   } else {
     return (
@@ -73,6 +74,7 @@ const Navigation = () => {
             alt="logo"
             height={100}
             width={100}
+            onClick={closeMenu}
           />
         </NavigationItem>
         {navItemsEl}

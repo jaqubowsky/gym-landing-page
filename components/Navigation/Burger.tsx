@@ -1,6 +1,3 @@
-"use client";
-
-import { motion } from "framer-motion";
 import { FC, HTMLAttributes } from "react";
 
 interface Burger extends HTMLAttributes<HTMLDivElement> {
@@ -10,36 +7,26 @@ interface Burger extends HTMLAttributes<HTMLDivElement> {
 
 const Burger: FC<Burger> = ({ isOpen, onClick }) => {
   return (
-    <motion.div
+    <div
       onClick={onClick}
-      className="absolute right-4 transition-all flex flex-col justify-around w-8 h-8 bg-transparent cursor-pointer p-0 z-20"
+      className="mr-2 flex flex-col justify-around w-8 h-8 bg-transparent cursor-pointer p-0 z-20"
     >
-      <motion.div
-        animate={{
-          rotate: isOpen ? 45 : 0,
-          y: !isOpen ? 0 : 12,
-        }}
-        className={`relative bg-white h-1 w-8" ${
-          isOpen ? "bg-yellow-300" : ""
+      <div
+        className={`relative bg-white h-1 w-8 transition-all duration-300 will-change-transform" ${
+          isOpen ? "bg-yellow-300 transform rotate-45 translate-y-[12px]" : "will-change-auto"
         }`}
       />
-      <motion.div
-        animate={{
-          opacity: isOpen ? 0 : 1,
-          transform: isOpen ? "translateX(20px)" : "translateX(0px)",
-        }}
-        className={`relative bg-white h-1 w-6" ${
-          isOpen ? "bg-yellow-300" : ""
+      <div
+        className={`relative bg-white h-1 w-8 opacity-1 transition-all duration-300 will-change-transform" ${
+          isOpen ? "bg-yellow-300 opacity-0" : "will-change-auto"
         }`}
       />
-      <motion.div
-        animate={{
-          rotate: isOpen ? -45 : 0,
-          y: !isOpen ? 0 : -10,
-        }}
-        className={`relative bg-white h-1 w-8 ${isOpen ? "bg-yellow-300" : ""}`}
+      <div
+        className={`relative bg-white h-1 w-8 transition-all duration-200 will-change-transform ${
+          isOpen ? "bg-yellow-300 -rotate-45 transform -translate-y-[9px]" : "will-change-auto"
+        }`}
       />
-    </motion.div>
+    </div>
   );
 };
 
