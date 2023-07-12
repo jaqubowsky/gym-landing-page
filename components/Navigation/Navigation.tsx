@@ -62,7 +62,7 @@ const Navigation = () => {
           </NavigationItem>
           <Burger isOpen={isOpen} onClick={toggleOpen} />
         </Nav>
-        {isOpen && <BurgerMenu>{navItemsEl}</BurgerMenu>}
+        <BurgerMenu showMenu={isOpen}>{navItemsEl}</BurgerMenu>
       </>
     );
   } else {

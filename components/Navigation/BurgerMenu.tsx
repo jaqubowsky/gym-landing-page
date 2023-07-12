@@ -1,15 +1,27 @@
-import { FC, ReactNode } from "react";
+"use client";
+
+import React, { FC, ReactNode } from "react";
+import { useTransition, animated } from "@react-spring/web";
 import Image from "next/image";
 
-interface BurgerMenu {
+interface BurgerMenuProps {
   children: ReactNode;
+  showMenu: boolean; // State passed as prop
 }
 
-const BurgerMenu: FC<BurgerMenu> = ({ children }) => {
-  return (
-    <>
-      <div
-        className={`will-change-transform slideIn fixed z-50 flex transition-all duration-300 h-full w-screen bg-neutral-700 justify-center`}
+const BurgerMenu: FC<BurgerMenuProps> = ({ children, showMenu }) => {
+  const transition = useTransition(showMenu, {
+    from: { opacity: 0, x: "-100%" },
+    enter: { opacity: 1, x: "0%" },
+    leave: { opacity: 0, x: "-100%" },
+    config: { duration: 200 },
+  });
+
+  return transition((styles, item) =>
+    item ? (
+      <animated.div
+        style={styles}
+        className="fixed z-50 flex h-full w-screen bg-neutral-700 justify-center"
       >
         <div className="flex flex-col items-center mt-10">
           <div className="h-48 w-48 flex-container mb-6">
@@ -23,8 +35,8 @@ const BurgerMenu: FC<BurgerMenu> = ({ children }) => {
           </div>
           <div className="flex-container flex-col gap-16">{children}</div>
         </div>
-      </div>
-    </>
+      </animated.div>
+    ) : null
   );
 };
 
