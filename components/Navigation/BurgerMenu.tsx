@@ -12,7 +12,7 @@ const BurgerMenu: FC<BurgerMenu> = ({ children, isOpen, toggleOpen }) => {
     <>
       <Burger isOpen={isOpen} onClick={toggleOpen} />
       {isOpen && (
-        <div className="absolute slideIn left-0 top-0 w-screen h-screen bg-neutral-700 flex items-center justify-center">
+        <div className="absolute left-0 top-0 w-screen h-screen bg-neutral-700 flex items-center justify-center">
           <div className="flex flex-col items-center justify-around h-3/4">
             {children}
           </div>
