@@ -13,7 +13,7 @@ const BurgerMenu: FC<BurgerMenu> = ({ children, isOpen, toggleOpen }) => {
     <>
       <Burger isOpen={isOpen} onClick={toggleOpen} />
       <div
-        className={`absolute transition-all flex duration-300 delay-75 left-0 top-0 w-screen h-screen bg-neutral-700 items-center justify-center opacity-0 ${
+        className={`absolute transition-all filter flex duration-300 delay-75 left-0 top-0 w-screen h-screen bg-neutral-700 items-center justify-center opacity-0 ${
           isOpen ? "slideIn" : ""
         } `}
       >
