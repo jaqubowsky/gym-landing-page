@@ -3,7 +3,6 @@
 import { FC, useEffect, useState } from "react";
 import ToggleSwitch from "../ToggleSwitch";
 import { PlusCircle } from "react-feather";
-import { motion, AnimatePresence } from "framer-motion";
 import { Tooltip } from "react-tooltip";
 
 interface PassProps {
@@ -60,19 +59,13 @@ const Pass: FC<PassProps> = ({ isOptionOn, passPrice, benefits }) => {
         <h3 className="text-2xl font-bold">Karnet</h3>
         <span>Płatny co miesiąc</span>
       </div>
-      <AnimatePresence>
-        <motion.div className="text-4xl font-bold my-6">
-          <motion.span
+        <div className="text-4xl font-bold my-6">
+          <span
             key={price}
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            exit={{ y: -20, opacity: 0 }}
-            transition={{ duration: 0.5 }}
           >
             {price} zł
-          </motion.span>
-        </motion.div>
-      </AnimatePresence>
+          </span>
+        </div>
       <ul className="flex flex-col gap-2">{benefitsEl}</ul>
       <div className="flex justify-between w-full mt-6">
         <span

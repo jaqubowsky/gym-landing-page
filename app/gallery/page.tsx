@@ -9,7 +9,7 @@ const res = search({
 
 export default async function GalleryPage() {
   const { resources } = await res;
-  
+
   const imagesArr = mapImageResources(resources);
 
   return (
@@ -18,7 +18,7 @@ export default async function GalleryPage() {
         <h4 className="font-bold text-5xl drop-shadow-md">Galeria</h4>
       </Section>
       <Section id="gallery" innerStyle="md:max-w-6xl">
-        <Lightbox imagesArr={imagesArr} />
+        <Lightbox images={imagesArr} />
       </Section>
     </>
   );

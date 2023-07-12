@@ -1,19 +1,11 @@
-"use client";
+'use client'
 
-import {
-  FC,
-  MouseEvent,
-  Suspense,
-  useCallback,
-  useEffect,
-  useState,
-} from "react";
+import { FC, MouseEvent, useCallback, useEffect, useState } from "react";
 import useOutsideClick from "@/hooks/useOutsideClick";
-import { AnimatePresence, motion } from "framer-motion";
 import { ArrowLeft, ArrowRight, X } from "react-feather";
 import Image from "next/image";
 
-export type image = {
+export type ImageData = {
   id: string;
   title: string;
   pixelate: string;
@@ -23,54 +15,43 @@ export type image = {
 };
 
 interface Props {
-  imagesArr: image[];
+  images: ImageData[];
 }
 
-const Lightbox: FC<Props> = ({ imagesArr: images }) => {
-  const [lightboxDisplay, setLightBoxDisplay] = useState(false);
-  const [imageToShow, setImageToShow] = useState<image>();
-  const ref = useOutsideClick(() => setLightBoxDisplay(false));
+const Lightbox: FC<Props> = ({ images }) => {
+  const [lightboxDisplay, setLightboxDisplay] = useState(false);
+  const [imageToShow, setImageToShow] = useState<ImageData | undefined>();
+  const ref = useOutsideClick(() => setLightboxDisplay(false));
 
-  const showImage = (image: image) => {
-    //set imageToShow to be the one that's been clicked on
+  const showImage = (image: ImageData) => {
     setImageToShow(image);
-    //set lightbox visibility to true
-    setLightBoxDisplay(true);
+    setLightboxDisplay(true);
   };
 
-  const closeLightbox = useCallback(() => {
-    setLightBoxDisplay(false);
-  }, [setLightBoxDisplay]);
+const closeLightbox = useCallback(() => {
+  setLightboxDisplay(false);
+}, [setLightboxDisplay]);
 
-  const showNext = useCallback(
-    (e: MouseEvent<HTMLButtonElement> | KeyboardEvent) => {
-      e.stopPropagation();
-      let currentIndex = images.indexOf(imageToShow!);
-      if (currentIndex >= images.length - 1) {
-        currentIndex = 0;
-        setImageToShow(images[currentIndex]);
-      } else {
-        let nextImage = images[currentIndex + 1];
-        setImageToShow(nextImage);
-      }
-    },
-    [images, imageToShow]
-  );
+const showNext = useCallback(
+  (e: MouseEvent<HTMLButtonElement> | KeyboardEvent) => {
+    e.stopPropagation();
+    const currentIndex = images.indexOf(imageToShow!);
+    const nextIndex = (currentIndex + 1) % images.length;
+    setImageToShow(images[nextIndex]);
+  },
+  [images, imageToShow]
+);
 
-  const showPrev = useCallback(
-    (e: MouseEvent<HTMLButtonElement> | KeyboardEvent) => {
-      e.stopPropagation();
-      let currentIndex = images.indexOf(imageToShow!);
-      if (currentIndex <= 0) {
-        currentIndex = images.length - 1;
-        setImageToShow(images[currentIndex]);
-      } else {
-        let nextImage = images[currentIndex - 1];
-        setImageToShow(nextImage);
-      }
-    },
-    [images, imageToShow]
-  );
+const showPrev = useCallback(
+  (e: MouseEvent<HTMLButtonElement> | KeyboardEvent) => {
+    e.stopPropagation();
+    const currentIndex = images.indexOf(imageToShow!);
+    const prevIndex = (currentIndex - 1 + images.length) % images.length;
+    setImageToShow(images[prevIndex]);
+  },
+  [images, imageToShow]
+);
+
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -100,7 +81,6 @@ const Lightbox: FC<Props> = ({ imagesArr: images }) => {
     >
       <Image
         className="object-cover w-full h-full"
-        style={{ backgroundImage: `url(${image.pixelate})` }}
         src={image.src}
         alt={image.title}
         width={image.width}
@@ -114,8 +94,7 @@ const Lightbox: FC<Props> = ({ imagesArr: images }) => {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
         {imageCards}
       </div>
-      <AnimatePresence>
-        {lightboxDisplay ? (
+        {lightboxDisplay && (
           <div
             id="lightbox"
             className="z-40 fixed inset-0 w-screen h-screen bg-lightbox flex-container"
@@ -128,43 +107,33 @@ const Lightbox: FC<Props> = ({ imagesArr: images }) => {
             </div>
             <button
               className="bg-yellow-300 bg-opacity-80 z-50 p-2 md:p-4 text-2xl rounded-sm drop-shadow-md absolute top-1/2 left-[5px] md:left-[50px] -translate-y-1/2"
-              onClick={(e) => showPrev(e)}
+              onClick={showPrev}
             >
               <ArrowLeft />
             </button>
-            <AnimatePresence mode="sync">
               {imageToShow && (
-                <motion.div
+                <div
                   ref={ref}
-                  className="flex-container "
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  whileHover={{ scale: 1.05 }}
+                  className="flex-container"
                 >
                   <Image
                     className="object-contain h-full w-full"
-                    style={{ backgroundImage: `url(${imageToShow.pixelate})` }}
                     src={imageToShow.src}
                     alt={imageToShow.title}
                     width={imageToShow.width}
                     height={imageToShow.height}
                     sizes="65vw"
                   />
-                </motion.div>
+                </div>
               )}
-            </AnimatePresence>
             <button
               className="bg-yellow-300 bg-opacity-80 z-50 p-2 text-2xl md:p-4 rounded-sm drop-shadow-md absolute md:right-[50px] top-1/2 right-[5px] -translate-y-1/2"
-              onClick={(e) => showNext(e)}
+              onClick={showNext}
             >
               <ArrowRight />
             </button>
           </div>
-        ) : (
-          ""
         )}
-      </AnimatePresence>
     </>
   );
 };
